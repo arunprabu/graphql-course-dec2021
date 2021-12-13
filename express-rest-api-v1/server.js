@@ -71,7 +71,7 @@ app.put('/api/users/:userId', (req, res) => {
 app.delete('/api/users/:userId', (req, res) => {
 
   console.log(req.params); // reading URL params
-
+  
   res.json( {
     status: 'Deleted Successfully'
   });
