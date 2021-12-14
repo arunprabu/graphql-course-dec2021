@@ -1,9 +1,10 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
+const { buildSchema } = require('graphql'); // scroll to the bottom to know disadvantages
 
 const app = express();
 const port = 3000;
+// This approach is using SDL 
 
 const schema = buildSchema(`
   """
@@ -27,6 +28,10 @@ const schema = buildSchema(`
     registeredUserList: [String],
     user(id: Int): User,
     usersList: [User]
+  }
+
+  type Mutation{
+    createContact(name: String, phone: String): String
   }
 `);
 
@@ -65,25 +70,34 @@ const rootResolver = {
   usersList: () => {
     const users = [{
       id: 1,
-      name: "Di",
       city: "Mirontsi"
     }, {
       id: 2,
-      name: "Tootsie",
+      
       city: "Mrongi Daja"
     }, {
       id: 3,
-      name: "Clement",
+      
       city: "Chosica"
     }];
 
-    
-
     return users;
+  },
+  createContact: ({name, phone}) => {
+    console.log(name);
+    console.log(phone);
+
+    return `${name} with ${phone} has been added into the contact book`;
   }
-
-
 }
+
+/*
+Test your mutations from graphiql 
+mutation {
+  createContact(name: "Kevin", phone: "243424124")
+}
+
+*/
 
 app.use('/graphql', graphqlHTTP({
   schema: schema, // Schema is now setup properly
@@ -97,3 +111,23 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 });
 
+
+/* Limitations /Disadvantages of Approach #1 
+  The buildSchema function takes a schema in SDL (schema definition language) 
+  and returns a GraphQLSchema object. 
+  Given two identical schemas generated with each method, 
+  runtime performance would be the same. 
+  Startup time for a server using buildSchema would be slower since parsing the SDL adds 
+  an extra step that would not otherwise exist.
+
+  Using buildSchema is generally inadvisable, as it severely limits the functionality of your schema.
+
+  A schema generated using buildSchema:
+
+    * Cannot specify resolve functions for individual fields
+    * Cannot specify either resolveType or isTypeOf properties for Types, making it impossible to use Unions and Interfaces
+    * Cannot utilize custom scalars
+
+  Refer: https://stackoverflow.com/questions/53984094/notable-differences-between-buildschema-and-graphqlschema
+
+*/
