@@ -225,8 +225,10 @@ src/
       Book.js   (to have BookType)
     Queries/   (all queries can be here)
       User.js  (User related queries can be here )
+      Todo.js  (Todo feature)
     Mutations/
       User.js   (user related mutations can be here)
+      Todo.js   
     index.js   (for RootQuery and Mutations go here)
 
 
@@ -235,3 +237,5 @@ Further Read:
 ===
 Aliases - https://graphql.org/learn/queries/#aliases
 Fragments - https://graphql.org/learn/queries/#fragments
+
+
