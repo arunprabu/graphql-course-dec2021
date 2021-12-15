@@ -28,9 +28,9 @@ function UserList(){
 
   let userCards = null; 
   if(data){
-    userCards = data.users.map( (user) => {
+    userCards = data.users.map( (user, index) => {
       return(
-        <div className="col-md-3">
+        <div className="col-md-3" key={index}>
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">{user.name}</h5>
