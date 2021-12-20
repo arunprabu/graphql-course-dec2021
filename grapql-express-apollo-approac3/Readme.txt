@@ -138,10 +138,16 @@ Step :
   You can work on Mutations
 
 
-  ======
+======
 
-  GraphQL - Apollo - Subscriptions Tutorial
-  =====
+GraphQL - Apollo - Subscriptions Tutorial
+=====
+You know that graphql subscription support is removed from Apollo Server.
+Refer: https://www.apollographql.com/docs/apollo-server/data/subscriptions/
+
+However, You can enable subscription.
+https://www.apollographql.com/docs/apollo-server/data/subscriptions/#enabling-subscriptions
+
 
 This section details how to set up a GraphQL server to support 
 subscriptions based on graphql subscriptions and subscriptions-transport-ws.
@@ -164,7 +170,7 @@ following 4 main steps:
 4. Setting up SubscriptionsServer, a transport between the server 
     and the clients
 
-Time Required to Complete: More than an hour. 
+Time Required to Complete: 1-2 Hours
 
 All the above steps with sub-steps are neatly documented here in the 
 following link.
