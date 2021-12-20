@@ -156,7 +156,7 @@ in a JavaScript app or wired up to a fully-featured GraphQL client
 like Apollo or Relay.)
 
 The process of setting up a GraphQL subscriptions server consist of the 
-following steps:
+following 4 main steps:
 
 1. Declaring subscriptions in the GraphQL schema
 2. Setup a PubSub instance that our server will publish new events to
@@ -164,6 +164,10 @@ following steps:
 4. Setting up SubscriptionsServer, a transport between the server 
     and the clients
 
+Time Required to Complete: More than an hour. 
+
+All the above steps with sub-steps are neatly documented here in the 
+following link.
 Continue with the steps by refering a bigger multi page tutorial here 
   https://www.apollographql.com/docs/graphql-subscriptions/
 
